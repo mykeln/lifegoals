@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
 }
 
 // run the script to create the image
-$filename = create_image('myke');
+//$filename = create_image('myke');
 
 ?>
 
@@ -87,6 +87,28 @@ $filename = create_image('myke');
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+
+	<style type="text/css">
+	 #hero {
+	 	background: url(icon.png) top center no-repeat;
+	 	height: 145px;
+	 	width: 87px;
+	 	text-indent: -9999px;
+	 	margin: 0px auto;
+	 }
+
+	 @media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+	 #hero {
+	 	background: url(icon@2x.png) top center no-repeat;
+	 	background-size: 100%;
+}
+
+	h1 {
+		text-align: center;
+	}
+	</style>
 </head>
 <body>
 
@@ -102,6 +124,10 @@ $filename = create_image('myke');
 		}
 	?>
 </ul>
+
+<div id="hero">#lifegoals</div>
+
+<h1>#lifegoals</h1>
 
 <div class="dynamic-form">
 	<form action="" method="post">
