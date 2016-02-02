@@ -1,4 +1,7 @@
 <?php
+ob_start();
+ob_get_clean();
+
 function create_image($user){
 	// FIXME: currently not working
 	// saves the file in the covers directory for posterity
@@ -77,7 +80,7 @@ if(isset($_POST['submit'])){
 }
 
 // run the script to create the image
-//$filename = create_image('myke');
+$filename = create_image($user);
 
 ?>
 
