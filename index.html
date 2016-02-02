@@ -65,7 +65,7 @@ position: relative;
 <div id="container-entry">
     <input type="text" id="entry" />
     <button id="preview">Preview</button>
-    <button id="save">Save Background</button>
+    <a download="goals.png" id="save">Save Background</button>
     <div id="bg" class="trigger" value="#000"><div><div></div></div></div>
     <div id="fg" class="trigger" value="#ccff00"><div><div></div></div></div>
 </div>
@@ -104,6 +104,7 @@ function preview(text) {
     // setting dimensions based on viewport
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     var maxWidth = canvas.width;
     var lineHeight = 130;
     var x = (canvas.width - maxWidth) / 2;
@@ -123,8 +124,9 @@ $("#preview").click(function() {
 $("#save").click(function() {
     var canvas = document.getElementById('myCanvas');
     var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    window.location.href=image;
+    $(this).attr("href", image);
 });
+
 </script>
 </body>
 </html>
