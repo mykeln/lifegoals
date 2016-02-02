@@ -1,5 +1,8 @@
 # lifegoals
 
+PRIMER
+on first page load, the script generates a default image based on default text. The form follows the image. If the form is submitted, it re-renders the page with a different image based on the text that was entered.
+
 TODO
 - make canvas take up full viewport width
 - let user enter text that fills the screen
