@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script>
+
+      function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + ' ';
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if (testWidth > maxWidth && n > 0) {
+            context.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+          }
+          else {
+            line = testLine;
+          }
+        }
+        context.fillText(line, x, y);
+      }
+
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      // setting dimensions based on viewport
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var maxWidth = 400;
+      var lineHeight = 43;
+      var x = (canvas.width - maxWidth) / 2;
+      var y = 60;
+      var text = 'NO SUGAR PLUMS BECAUSE YOU BE GETTING SOME';
+
+      context.font = '40pt Calibri';
+      context.fillStyle = '#000';
+
+      wrapText(context, text, x, y, maxWidth, lineHeight);
+    </script>
+  </body>
+</html>
