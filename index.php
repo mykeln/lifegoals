@@ -1,11 +1,7 @@
 <?php
-ob_start();
-ob_get_clean();
-
-function create_image($user){
-	// FIXME: currently not working
+function create_image($goal){
 	// saves the file in the covers directory for posterity
-	$file = "covers/".md5($user[0]['goal']).".png";
+	$file = "covers/".md5($goal[0]['goal']).".png";
 
 	// FIXME: get resolution from submitted form
 	$img = imagecreatetruecolor(1080, 1920);
@@ -27,8 +23,8 @@ function create_image($user){
 	$font = "./font/Capriola-Regular.ttf";
 	$fontSize = 120;
 
-	// FIXME: get text from submitted form
-	$rawtext = "DINO BESLAGIC SHOULD BUILD A UTILITY SINK OUT OF CONCRETE";
+	// get text from submitted form
+	$rawtext = strtoupper($goal[0]['goal']);
 
 	// wrap the text after 10 characters
 	$text = wordwrap($rawtext, 10, "\n");
@@ -49,38 +45,35 @@ function create_image($user){
 	// y position currently hardcoded to 200. it should be fixed.
 	imagettftext($img, $fontSize, 0, $text_posX, 200, $fg_color, $font, $text);
 
-	header("Content-Type: image/png");
-	imagepng($img);
-
-	return $file;
-}
-
-// from old script
-$user = array(
-
-	array(
-		'goal'=> 'NO SUGAR'));
-
-
-// error checking
-if(isset($_POST['submit'])){
-
-	$error = array();
-	if(strlen($_POST['goal'])==0){
-		$error[] = 'Please enter a goal';
+	// if form was actually submitted, generate and create the cover image
+	if(isset($_POST['submit'])){
+		imagepng($img, $file);
 	}
 
+	return $file;
+} // end image create function
+
+
+// setting default entry for goal
+$goal = array(array('goal'=> 'NO SUGAR'));
+
+// if form was submitted
+if(isset($_POST['submit'])){
+	$error = array();
+
+	// checking to see if goal was entered. if not, throw an error
+	if(strlen($_POST['goal'])==0){
+		$error[] = 'No goal? No background.';
+	}
+
+	// if no errors, reset the definition of goal to be the one that was submitted, rather than the default
 	if(count($error)==0){
-		$user = array(
-			array(
-				'goal'=> $_POST['goal'],
-				'font-size'=>'27',
-				'color'=>'grey'));
+		$goal = array(array('goal'=> $_POST['goal']));
 	}
 }
 
 // run the script to create the image
-$filename = create_image($user);
+$filename = create_image($goal);
 
 ?>
 
@@ -90,9 +83,14 @@ $filename = create_image($user);
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
 	<style type="text/css">
+		body {
+			font: normal 14px/17px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
 	 #hero {
+	 	margin: 20px;
 	 	background: url(icon.png) top center no-repeat;
 	 	height: 145px;
 	 	width: 87px;
@@ -100,45 +98,88 @@ $filename = create_image($user);
 	 	margin: 0px auto;
 	 }
 
-	 @media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
+	 /* retina */
+	 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	 #hero {
 	 	background: url(icon@2x.png) top center no-repeat;
 	 	background-size: 100%;
-}
+		}
 
 	h1 {
+		margin: 20px;
+	}
+
+	h2 {
+		margin: 20px;
+		line-height: 23px;
+		color: #ccc;
+	}
+
+	input {
+		margin: 20px;
+		box-sizing: border-box;
+		width: 90%;
+		font-size: 20px;
+		line-height: 30px;
+	}
+
+	input[type=submit] {
+		cursor:pointer;
+		background: #1485E0;
+		border: 4px solid #106AB3;
+		border-radius: 8px;
+		-webkit-border-radius: 8px;
+		color: #fff;
+		line-height: 40px;
+	}
+
+	.footer {
 		text-align: center;
+	}
+
+	.footer a {
+		text-decoration: none;
+		color: #ddd;
 	}
 	</style>
 </head>
 <body>
 
-<!-- this should show the submitted image on line 79 -->
-<img src="<?=$filename;?>?id=<?=rand(0,1292938);?>" />
-
-<ul>
-	<?php
-		if(isset($error)){
-			foreach($error as $errors){
-				echo '<li>'.$errors.'</li>';
-			}
+<?php
+	// if there were errors, list them
+	if(isset($error)){
+		foreach($error as $errors){
+			echo '<p>'.$errors.'</p>';
 		}
-	?>
-</ul>
+	}
+?>
+
+<?php
+	if(isset($_POST['submit'])){
+?>
+	<!-- this should show the submitted image on line 79 -->
+	<img src="<?=$filename;?>?id=<?=rand(0,1292938);?>" />
+
+	Share your goals to hold yourself accountable
+	<a href="#">Tweet my life goal</a>
+<?php
+}
+?>
 
 <div id="hero">#lifegoals</div>
 
 <h1>#lifegoals</h1>
+<h2>Having trouble staying on track? Make a background to remind you whenever you pull out your phone.</h2>
 
 <div class="dynamic-form">
 	<form action="" method="post">
-		<label>Goal</label>
-		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="Life Goal"><br/>
-		<input name="submit" type="submit" class="btn btn-primary" value="Make a background" />
+		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar"><br/>
+		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
 </div>
 
+<div class="footer">
+	<a href="http://wakerlabs.com">© 2015 Waker, LLC.</a>
+</div>
 </body>
 </html>
