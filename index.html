@@ -20,6 +20,18 @@ body, html {
 <body>
 <canvas id="myCanvas"></canvas>
 <script>
+// Converts canvas to an image
+function convertCanvasToImage(canvas) {
+	var image = new Image();
+	image.src = canvas.toDataURL("image/png");
+	return image;
+}
+
+$('.download').click(function(){
+document.getElementById("pngHolder").appendChild(convertCanvasToImage(canvas));
+
+});
+
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
     var words = text.split(' ');
     var line = '';
@@ -51,6 +63,9 @@ var text = 'NO SUGAR PLUMS BECAUSE YOU BE GETTING SOME';
 context.font = '120pt Helvetica';
 context.fillStyle = '#000';
 wrapText(context, text, x, y, maxWidth, lineHeight);
+
+
+
 </script>
 </body>
 </html>
