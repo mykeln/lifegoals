@@ -239,6 +239,7 @@ $filename = create_image($goal,$img_height,$img_width);
 		var trunc_h = h / 4;
 
 		window.onload = function () {
+			// FIXME: not quite getting the correct size to fit as a background
 			document.getElementById("img_height").value = h;
 			document.getElementById("img_width").value = w;
 
