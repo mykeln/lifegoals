@@ -257,7 +257,7 @@ document.getElementById("img_width").value = w;
 	<img src="<?=$filename;?>?id=<?=rand(0,1292938);?>" />
 
 	Share your goals to hold yourself accountable
-	<a href="#">Tweet my life goal</a>
+	<a href="http://twitter.com/home?status=<?php $goal ?> #lifegoals">Share with friends to hold yourself accountable</a>"></a>
 <?php
 } else {
 ?>
