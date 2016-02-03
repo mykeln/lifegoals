@@ -13,16 +13,16 @@
 <script src="assets/javascript/lib/tinycolorpicker.min.js"></script>
 
 <!-- Standard -->
-<title>Lock your #lifegoals</title>
-<meta name="description" content="Make a background for your lock screen to maintain good habits.">
-<meta name="keywords" content="lifegoals, life, goals, resolution">
+<title>Lock in your #nosugar</title>
+<meta name="description" content="Make a lock screen reminder for all your devices.">
+<meta name="keywords" content="no sugar, lifegoals, life, goals, resolution">
 <meta name="author" content="Waker, LLC">
-<link rel="canonical" href="http://wakerlabs.com/lifegoals">
+<link rel="canonical" href="http://nosugar.co">
 
 <!-- Schema.org -->
-<meta itemprop="name" content="#lifegoals">
-<meta name="description" content="Make a background for your lock screen to maintain good habits.">
-<meta itemprop="url" content="http://wakerlabs.com/lifegoals">
+<meta itemprop="name" content="#nosugar">
+<meta name="description" content="Make a lock screen reminder for all your devices.">
+<meta itemprop="url" content="http://nosugar.co">
 <meta itemprop="keywords" content="send, sign, store, clickthrough, clickwrap, agreement, subscription, saas">
 <meta itemprop="image" content="assets/images/228x228.png">
 <meta itemprop="sourceOrganization" content="Waker, LLC">
@@ -33,10 +33,10 @@
 <meta name="twitter:site" content="@wakerlabs">
 
 <!-- OpenGraph -->
-<meta property="og:title" content="#lifegoals">
-<meta property="og:site_name" content="#lifegoals">
-<meta property="og:url" content="http://wakerlabs.com/lifegoals">
-<meta property="description" content="Make a background for your lock screen to maintain good habits.">
+<meta property="og:title" content="#nosugar">
+<meta property="og:site_name" content="#nosugar">
+<meta property="og:url" content="http://nosugar.co">
+<meta property="description" content="Make a lock screen reminder for all your devices.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="assets/images/228x228.png">
@@ -61,7 +61,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="apple-touch-startup-image" href="assets/images/320x480-startup-image.png">
-<meta name="apple-mobile-web-app-title" content="#lifegoals">
+<meta name="apple-mobile-web-app-title" content="#nosugar">
 <link rel="apple-touch-icon" sizes="57x57" href="assets/images/57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="assets/images/114x114.png">
 <link rel="apple-touch-icon" sizes="60x60" href="assets/images/60x60.png">
@@ -72,11 +72,11 @@
 <link rel="apple-touch-icon" sizes="152x152" href="assets/images/152x152.png">
 
 <!-- Microsoft -->
-<meta name="application-name" content="#lifegoals">
-<meta name="msapplication-tooltip" content="#lifegoals">
+<meta name="application-name" content="#nosugar">
+<meta name="msapplication-tooltip" content="#nosugar">
 <meta name="msapplication-window" content="width=1024;height=768">
 <meta name="msapplication-navbutton-color" content="#CC0400">
-<meta name="msapplication-starturl" content="http://wakerlabs.com/lifegoals">
+<meta name="msapplication-starturl" content="http://nosugar.co">
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="assets/images/144x144.png">
 <meta name="msapplication-config" content="browserconfig.xml">
@@ -125,15 +125,15 @@
 
 	<!-- the link -->
 	<p>Press and hold the circle to save to your photos, then assign it as your lock screen.</p>
-	<a href="http://twitter.com/home?status=<?php $goal ?> #lifegoals">Share with friends to hold yourself accountable</a>
+	<a href="http://twitter.com/home?status=<?php $goal ?> #nosugar">Share with friends to hold yourself accountable</a>
 <?php
 } else {
 ?>
 
-<div id="hero">#lifegoals</div>
+<div id="hero">#nosugar</div>
 
-<h1>#lifegoals</h1>
-<h2>Having trouble staying on track? Make a background to remind you whenever you pull out your phone.</h2>
+<h1>#nosugar</h1>
+<h2>Having trouble keeping a habit? Make a lock screen photo to remind you whenever you pull out your phone.</h2>
 
 <div class="dynamic-form">
 	<form action="" method="post">
