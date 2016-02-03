@@ -81,10 +81,84 @@ $filename = create_image($goal);
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
+<!-- Standard -->
+<title>Lock your #lifegoals</title>
+<meta name="description" content="Make a background for your lock screen to maintain good habits.">
+<meta name="keywords" content="lifegoals, life, goals, resolution">
+<meta name="author" content="Waker, LLC">
+<link rel="canonical" href="http://wakerlabs.com/lifegoals">
+
+<!-- Schema.org -->
+<meta itemprop="name" content="#lifegoals">
+<meta name="description" content="Make a background for your lock screen to maintain good habits.">
+<meta itemprop="url" content="http://wakerlabs.com/lifegoals">
+<meta itemprop="keywords" content="send, sign, store, clickthrough, clickwrap, agreement, subscription, saas">
+<meta itemprop="image" content="/path/to/228x228.png">
+<meta itemprop="sourceOrganization" content="Waker, LLC">
+<meta itemprop="inLanguage" content="en-US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@wakerlabs">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="#lifegoals">
+<meta property="og:site_name" content="#lifegoals">
+<meta property="og:url" content="http://wakerlabs.com/lifegoals">
+<meta property="description" content="Make a background for your lock screen to maintain good habits.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/path/to/228x228.png">
+
+<!-- Favicons -->
+<!-- Standard -->
+<meta name="theme-color" content="#FFFFFF">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="/path/to/16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/path/to/32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/path/to/48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/path/to/64x64.png" sizes="64x64">
+<link rel="icon" type="image/png" href="/path/to/96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/path/to/128x128.png" sizes="128x128">
+<link rel="icon" type="image/png" href="/path/to/160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/path/to/196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/path/to/228x228.png" sizes="228x228">
+<link rel="icon" type="image/png" href="/path/to/256x256.png" sizes="256x256">
+<link rel="shortcut icon" href="/path/to/favicon.ico">
+
+<!-- Apple -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-startup-image" href="path/to/320x480-startup-image.png">
+<meta name="apple-mobile-web-app-title" content="#lifegoals">
+<link rel="apple-touch-icon" sizes="57x57" href="/path/to/57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/path/to/114x114.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/path/to/60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/path/to/120x120.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/path/to/72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/path/to/144x144.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/path/to/76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/path/to/152x152.png">
+
+<!-- Microsoft -->
+<meta name="application-name" content="#lifegoals">
+<meta name="msapplication-tooltip" content="#lifegoals">
+<meta name="msapplication-window" content="width=1024;height=768">
+<meta name="msapplication-navbutton-color" content="#CC0400">
+<meta name="msapplication-starturl" content="http://wakerlabs.com/lifegoals">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/path/to/144x144.png">
+<meta name="msapplication-config" content="browserconfig.xml">
+<!-- Favicons -->
+
+<link rel="icon" type="image/png" href="/path/to/logo.png" />
 
 	<style type="text/css">
 		body {
@@ -143,6 +217,8 @@ $filename = create_image($goal);
 		color: #ddd;
 	}
 	</style>
+
+
 </head>
 <body>
 
