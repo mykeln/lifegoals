@@ -27,7 +27,7 @@ function create_image($goal,$img_height,$img_width){
 	$rawtext = strtoupper($goal);
 
 	// wrap the text after 10 characters
-	$text = wordwrap($rawtext, 10, "\n");
+	$text = wordwrap($rawtext, 6, "\n");
 
 
 	$textDim = imagettfbbox($fontSize, 0, $font, $text);
