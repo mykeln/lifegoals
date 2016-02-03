@@ -3,6 +3,8 @@ function create_image($goal,$img_height,$img_weight){
 	// saves the file in the covers directory for posterity
 	$file = "covers/".md5($goal).".png";
 
+echo $goal;
+
 	$img_height = $img_height;
 	$img_width = $img_weight;
 
