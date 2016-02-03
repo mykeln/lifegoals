@@ -3,8 +3,11 @@ function create_image($goal){
 	// saves the file in the covers directory for posterity
 	$file = "covers/".md5($goal[0]['goal']).".png";
 
+	$img_height = $goal[0]['width'];
+	$img_width = $goal[0]['height'];
+
 	// FIXME: get resolution from submitted form
-	$img = imagecreatetruecolor(1080, 1920);
+	$img = imagecreatetruecolor($img_width, $img_height);
 
 	$imageX = imagesx($img);
 	$imageY = imagesy($img);
@@ -55,7 +58,7 @@ function create_image($goal){
 
 
 // setting default entry for goal
-$goal = array(array('goal'=> 'NO SUGAR'));
+$goal = array(array('goal'=>'NO SUGAR', 'width'=>'1080', 'height'=>'1920'));
 
 // if form was submitted
 if(isset($_POST['submit'])){
@@ -250,6 +253,8 @@ $filename = create_image($goal);
 
 <div class="dynamic-form">
 	<form action="" method="post">
+		<input type="hidden" value="1080" name="width" />
+		<input type="hidden" value="1920" name="height" />
 		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar"><br/>
 		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
