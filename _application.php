@@ -10,7 +10,8 @@ function hexColorAllocate($img,$hex){
 
 function create_image($goal,$bg_color,$img_height,$img_width){
   // saves the file in the covers directory for posterity
-  $file = "covers/".md5($goal).".png";
+  $random_name = $goal.rand(0,1292938);
+  $file = "covers/".md5($random_name).".png";
 
   // sets image resolution to screen size
   $img = imagecreatetruecolor($img_height,$img_width);
