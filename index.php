@@ -3,8 +3,11 @@ function create_image($goal){
 	// saves the file in the covers directory for posterity
 	$file = "covers/".md5($goal[0]['goal']).".png";
 
-	$img_height = $goal[0]['width'];
+	$img_height = $goal[0]['goal'];
 	$img_width = $goal[0]['height'];
+
+echo $img_height;
+echo "hello";
 
 	// FIXME: get resolution from submitted form
 	$img = imagecreatetruecolor($img_width, $img_height);
