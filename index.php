@@ -6,8 +6,6 @@ function create_image($goal,$img_height,$img_weight){
 	$img_height = $img_height;
 	$img_width = $img_weight;
 
-echo $img_height;
-
 	// FIXME: get resolution from submitted form
 	$img = imagecreatetruecolor($img_width, $img_height);
 
@@ -93,6 +91,8 @@ $filename = create_image($goal,$img_height,$img_width);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -226,7 +226,14 @@ $filename = create_image($goal,$img_height,$img_width);
 		color: #ddd;
 	}
 	</style>
+	<script type="text/javascript">
+var ratio = window.devicePixelRatio || 1;
+var w = screen.width * ratio;
+var h = screen.height * ratio;
 
+document.getElementById("img_height").value = h;
+document.getElementById("img_width").value = w;
+	</script>
 
 </head>
 <body>
@@ -259,8 +266,8 @@ $filename = create_image($goal,$img_height,$img_width);
 
 <div class="dynamic-form">
 	<form action="" method="post">
-		<input type="hidden" value="1080" name="img_width" />
-		<input type="hidden" value="1920" name="img_height" />
+		<input type="hidden" value="1080" id="img_height" name="img_width" />
+		<input type="hidden" value="1920" id="img_width" name="img_height" />
 		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar"><br/>
 		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
