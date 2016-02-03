@@ -239,11 +239,8 @@ $filename = create_image($goal,$img_height,$img_width);
 	<script type="text/javascript">
 		var ratio = window.devicePixelRatio || 1;
 		// FIXME: not quite getting the correct size to fit as a background
-		//var w = screen.width * ratio;
-		//var h = screen.height * ratio;
-
-		var w = document.documentElement.clientWidth;
-		var h = document.documentElement.clientHeight;
+		var w = screen.width * ratio;
+		var h = screen.height * ratio;
 
 		// shrinking the size of the image for display, but still able to press and hold
 		var trunc_w = w / 4;
