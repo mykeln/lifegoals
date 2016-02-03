@@ -1,13 +1,12 @@
 <?php
-function create_image($goal){
+function create_image($goal,$img_height,$img_weight){
 	// saves the file in the covers directory for posterity
-	$file = "covers/".md5($goal[0]['goal']).".png";
+	$file = "covers/".md5($goal).".png";
 
-	$img_height = $goal[0]['goal'];
-	$img_width = $goal[0]['height'];
+	$img_height = $img_height;
+	$img_width = $img_weight;
 
 echo $img_height;
-echo "hello";
 
 	// FIXME: get resolution from submitted form
 	$img = imagecreatetruecolor($img_width, $img_height);
@@ -61,7 +60,9 @@ echo "hello";
 
 
 // setting default entry for goal
-$goal = array(array('goal'=>'NO SUGAR', 'width'=>'1080', 'height'=>'1920'));
+$goal = 'NO SUGAR';
+$img_width = "1080";
+$img_height = "1920";
 
 // if form was submitted
 if(isset($_POST['submit'])){
@@ -74,12 +75,14 @@ if(isset($_POST['submit'])){
 
 	// if no errors, reset the definition of goal to be the one that was submitted, rather than the default
 	if(count($error)==0){
-		$goal = array(array('goal'=> $_POST['goal']));
+		$goal = $_POST['goal'];
+		$img_height = $_POST['img_height'];
+		$img_width = $_POST['img_width'];
 	}
 }
 
 // run the script to create the image
-$filename = create_image($goal);
+$filename = create_image($goal,$img_height,$img_width);
 
 ?>
 
@@ -246,7 +249,7 @@ $filename = create_image($goal);
 	Share your goals to hold yourself accountable
 	<a href="#">Tweet my life goal</a>
 <?php
-}
+} else {
 ?>
 
 <div id="hero">#lifegoals</div>
@@ -256,8 +259,8 @@ $filename = create_image($goal);
 
 <div class="dynamic-form">
 	<form action="" method="post">
-		<input type="hidden" value="1080" name="width" />
-		<input type="hidden" value="1920" name="height" />
+		<input type="hidden" value="1080" name="img_width" />
+		<input type="hidden" value="1920" name="img_height" />
 		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar"><br/>
 		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
@@ -266,5 +269,9 @@ $filename = create_image($goal);
 <div class="footer">
 	<a href="http://wakerlabs.com">© 2015 Waker, LLC.</a>
 </div>
+
+<?php
+}
+?>
 </body>
 </html>
