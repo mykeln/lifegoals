@@ -170,16 +170,19 @@ $filename = create_image($goal,$img_height,$img_width);
 	<style type="text/css">
 		body {
 			font:normal 14px/17px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			text-align: center;
 		}
 
 		h1 {
 			margin:20px;
+			text-align: left;
 		}
 
 		h2 {
 			color:#ccc;
 			line-height:23px;
 			margin:20px;
+			text-align: left;
 		}
 
 		input {
@@ -245,11 +248,6 @@ $filename = create_image($goal,$img_height,$img_width);
 		window.onload = function () {
 			document.getElementById("img_height").value = h;
 			document.getElementById("img_width").value = w;
-
-			//document.getElementById("result_image").setAttribute("height", 320);
-			//document.getElementById("result_image").setAttribute("width", 240);
-
-
 		}
 	</script>
 
@@ -270,7 +268,7 @@ $filename = create_image($goal,$img_height,$img_width);
 		$image_file = $filename."?id=".rand(0,1292938);
 ?>
 	<!-- the image -->
-	<a href="<?= $image_file; ?>"><img id="result_image" height="200" width="200" src="<?= $image_file; ?>" /></a>
+	<img id="result_image" height="200" width="200" src="<?= $image_file; ?>" />
 
 	<!-- the link -->
 	<p>Press and hold to save to your photos, then assign it as your lock screen.</p>
