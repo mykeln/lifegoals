@@ -3,8 +3,6 @@ function create_image($goal,$img_height,$img_weight){
 	// saves the file in the covers directory for posterity
 	$file = "covers/".md5($goal).".png";
 
-echo $goal;
-
 	$img_height = $img_height;
 	$img_width = $img_weight;
 
@@ -52,7 +50,7 @@ echo $goal;
 
 	// if form was actually submitted, generate and create the cover image
 	if(isset($_POST['submit'])){
-		imagepng($img, $file);
+	  imagepng($img, $file);
 	}
 
 	return $file;
@@ -61,8 +59,8 @@ echo $goal;
 
 // setting default entry for goal
 $goal = 'NO SUGAR';
-$img_width = "1080";
-$img_height = "1920";
+$img_width = "320";
+$img_height = "640";
 
 // if form was submitted
 if(isset($_POST['submit'])){
