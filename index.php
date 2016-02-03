@@ -168,6 +168,10 @@ $filename = create_image($goal,$img_height,$img_width);
 <link rel="icon" type="image/png" href="/path/to/logo.png" />
 
 	<style type="text/css">
+		a {
+			color: #1485E0;
+		}
+
 		body {
 			font:normal 14px/17px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			text-align: center;
@@ -271,7 +275,7 @@ $filename = create_image($goal,$img_height,$img_width);
 	<img id="result_image" height="200" width="200" src="<?= $image_file; ?>" />
 
 	<!-- the link -->
-	<p>Press and hold to save to your photos, then assign it as your lock screen.</p>
+	<p>Press and hold the circle to save to your photos, then assign it as your lock screen.</p>
 	<a href="http://twitter.com/home?status=<?php $goal ?> #lifegoals">Share with friends to hold yourself accountable</a>
 <?php
 } else {
