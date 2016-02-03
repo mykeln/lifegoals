@@ -96,6 +96,7 @@
 			document.getElementById("img_height").value = h;
 			document.getElementById("img_width").value = w;
 		}
+
 	</script>
 
 </head>

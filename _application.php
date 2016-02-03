@@ -37,14 +37,16 @@ function create_image($goal,$img_height,$img_width){
   $text_posX = ($imageX / 2) - ($textX / 2);
 
   // FIXME: fix this to center it vertically
-  $text_posY = ($imageY / 2) - ($textY / 2);
+//  $text_posY = ($imageY / 2) - ($textY / 2);
+
+$text_posY = 600;
 
   // make fonts transparent
   imagealphablending($img, true);
 
   // place the text inside the image according to fg_color
   // y position currently hardcoded to 200. it should be fixed.
-  imagettftext($img, $fontSize, 0, $text_posX, 200, $fg_color, $font, $text);
+  imagettftext($img, $fontSize, 0, $text_posX, $text_posY, $fg_color, $font, $text);
 
   // if form was actually submitted, generate and create the cover image
   if(isset($_POST['submit'])){
