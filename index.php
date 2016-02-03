@@ -29,7 +29,7 @@ echo $img_height;
 	$fontSize = 120;
 
 	// get text from submitted form
-	$rawtext = strtoupper($goal[0]['goal']);
+	$rawtext = strtoupper($goal);
 
 	// wrap the text after 10 characters
 	$text = wordwrap($rawtext, 10, "\n");
