@@ -1,12 +1,9 @@
 <?php
-function create_image($goal,$img_height,$img_weight){
+function create_image($goal,$img_height,$img_width){
 	// saves the file in the covers directory for posterity
 	$file = "covers/".md5($goal).".png";
 
-	$img_height = $img_height;
-	$img_width = $img_weight;
-
-	// FIXME: get resolution from submitted form
+	// sets image resolution to screen size
 	$img = imagecreatetruecolor($img_width, $img_height);
 
 	$imageX = imagesx($img);
@@ -31,6 +28,7 @@ function create_image($goal,$img_height,$img_weight){
 
 	// wrap the text after 10 characters
 	$text = wordwrap($rawtext, 10, "\n");
+
 
 	$textDim = imagettfbbox($fontSize, 0, $font, $text);
 	$textX = $textDim[2] - $textDim[0];
@@ -59,8 +57,8 @@ function create_image($goal,$img_height,$img_weight){
 
 // setting default entry for goal
 $goal = 'NO SUGAR';
-$img_width = "320";
-$img_height = "640";
+$img_width = 320;
+$img_height = 640;
 
 // if form was submitted
 if(isset($_POST['submit'])){
@@ -73,9 +71,9 @@ if(isset($_POST['submit'])){
 
 	// if no errors, reset the definition of goal to be the one that was submitted, rather than the default
 	if(count($error)==0){
-		$goal = $_POST['goal'];
-		$img_height = $_POST['img_height'];
-		$img_width = $_POST['img_width'];
+          $goal = $_POST['goal'];
+	  $img_height = (int) $_POST['img_height'];
+	  $img_width = (int) $_POST['img_width'];
 	}
 }
 
@@ -227,12 +225,17 @@ $filename = create_image($goal,$img_height,$img_width);
 	}
 	</style>
 	<script type="text/javascript">
+
+
 var ratio = window.devicePixelRatio || 1;
 var w = screen.width * ratio;
 var h = screen.height * ratio;
 
+window.onload = function () {
 document.getElementById("img_height").value = h;
 document.getElementById("img_width").value = w;
+
+}
 	</script>
 
 </head>
