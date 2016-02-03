@@ -1,5 +1,14 @@
 <?php
-function create_image($goal,$img_height,$img_width){
+function hexColorAllocate($img,$hex){
+    $hex = ltrim($hex,'#');
+    $a = hexdec(substr($hex,0,2));
+    $b = hexdec(substr($hex,2,2));
+    $c = hexdec(substr($hex,4,2));
+
+    return imagecolorallocate($img, $a, $b, $c);
+}
+
+function create_image($goal,$bg_color,$img_height,$img_width){
   // saves the file in the covers directory for posterity
   $file = "covers/".md5($goal).".png";
 
@@ -14,7 +23,10 @@ function create_image($goal,$img_height,$img_width){
 
   // FIXME: get colors from submitted form
   $fg_color = imagecolorallocate($img, 255,255,255);
-  $bg_color = imagecolorallocate($img, 0,0,0);
+  //$bg_color = imagecolorallocate($img, 0,0,0);
+  $bg_color = hexColorAllocate($img,$bg_color);
+
+  //$bg_color = imagecolorallocate($img, $raw_color);
 
   // create a rectangle with the defined background color
   imagefilledrectangle($img, 0, 0, $imageX, $imageY, $bg_color);
@@ -74,10 +86,11 @@ if(isset($_POST['submit'])){
     $goal = $_POST['goal'];
     $img_height = (int) $_POST['img_height'];
     $img_width = (int) $_POST['img_width'];
+    $bg_color = $_POST['bg_color'];
   }
 }
 
 // run the script to create the image
-$filename = create_image($goal,$img_height,$img_width);
+$filename = create_image($goal,$bg_color,$img_height,$img_width);
 
 ?>

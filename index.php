@@ -5,10 +5,12 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
+<script src="assets/javascript/lib/tinycolorpicker.min.js"></script>
 
 <!-- Standard -->
 <title>Lock your #lifegoals</title>
@@ -95,6 +97,9 @@
 		window.onload = function () {
 			document.getElementById("img_height").value = h;
 			document.getElementById("img_width").value = w;
+
+			var $picker = document.getElementById("colorPicker"),   picker  = tinycolorpicker($picker);
+			picker.setColor("#444444");
 		}
 	</script>
 
@@ -134,6 +139,14 @@
 		<input type="hidden" value="1080" id="img_height" name="img_width" />
 		<input type="hidden" value="1920" id="img_width" name="img_height" />
 		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar">
+
+    <div id="colorPicker">
+      <a class="color"><div class="colorInner"></div></a>
+      <div class="track"></div>
+      <ul class="dropdown"><li></li></ul>
+      <input name="bg_color" type="hidden" class="colorInput"/>
+    </div>
+
 		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
 </div>
