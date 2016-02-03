@@ -4,7 +4,7 @@ function create_image($goal,$img_height,$img_width){
 	$file = "covers/".md5($goal).".png";
 
 	// sets image resolution to screen size
-	$img = imagecreatetruecolor($img_width, $img_height);
+	$img = imagecreatetruecolor($img_height,$img_width);
 
 	$imageX = imagesx($img);
 	$imageY = imagesy($img);
@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
 
 	// if no errors, reset the definition of goal to be the one that was submitted, rather than the default
 	if(count($error)==0){
-          $goal = $_POST['goal'];
+    $goal = $_POST['goal'];
 	  $img_height = (int) $_POST['img_height'];
 	  $img_width = (int) $_POST['img_width'];
 	}
@@ -169,73 +169,84 @@ $filename = create_image($goal,$img_height,$img_width);
 
 	<style type="text/css">
 		body {
-			font: normal 14px/17px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		}
-	 #hero {
-	 	margin: 20px;
-	 	background: url(icon.png) top center no-repeat;
-	 	height: 145px;
-	 	width: 87px;
-	 	text-indent: -9999px;
-	 	margin: 0px auto;
-	 }
-
-	 /* retina */
-	 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	 #hero {
-	 	background: url(icon@2x.png) top center no-repeat;
-	 	background-size: 100%;
+			font:normal 14px/17px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		}
 
-	h1 {
-		margin: 20px;
-	}
+		h1 {
+			margin:20px;
+		}
 
-	h2 {
-		margin: 20px;
-		line-height: 23px;
-		color: #ccc;
-	}
+		h2 {
+			color:#ccc;
+			line-height:23px;
+			margin:20px;
+		}
 
-	input {
-		margin: 20px;
-		box-sizing: border-box;
-		width: 90%;
-		font-size: 20px;
-		line-height: 30px;
-	}
+		input {
+			box-sizing:border-box;
+			font-size:20px;
+			line-height:30px;
+			margin:20px;
+			width:90%;
+		}
 
-	input[type=submit] {
-		cursor:pointer;
-		background: #1485E0;
-		border: 4px solid #106AB3;
-		border-radius: 8px;
-		-webkit-border-radius: 8px;
-		color: #fff;
-		line-height: 40px;
-	}
+		input[type=submit] {
+			-webkit-border-radius:8px;
+			background:#1485E0;
+			border:4px solid #106AB3;
+			border-radius:8px;
+			color:#fff;
+			cursor:pointer;
+			line-height:40px;
+		}
 
-	.footer {
-		text-align: center;
-	}
+		#hero {
+			background:url(icon.png) top center no-repeat;
+			height:145px;
+			margin:0 auto;
+			text-indent:-9999px;
+			width:87px;
+		}
 
-	.footer a {
-		text-decoration: none;
-		color: #ddd;
-	}
+		#result_image {
+			border-radius:200px;
+		}
+
+		.footer	{
+			text-align:center;
+		}
+
+		.footer a	{
+			color:#ddd;
+			text-decoration:none;
+		}
+
+		/* retina graffix */
+		@media -webkit-min-device-pixel-ratio 2,min-resolution 192dpi {
+			#hero {
+				background:url(icon@2x.png) top center no-repeat;
+				background-size:100%;
+			}
+		}
 	</style>
 	<script type="text/javascript">
+		var ratio = window.devicePixelRatio || 1;
+		var w = screen.width * ratio;
+		var h = screen.height * ratio;
+
+		// shrinking the size of the image for display, but still able to press and hold
+		var trunc_w = w / 4;
+		var trunc_h = h / 4;
+
+		window.onload = function () {
+			document.getElementById("img_height").value = h;
+			document.getElementById("img_width").value = w;
+
+			//document.getElementById("result_image").setAttribute("height", 320);
+			//document.getElementById("result_image").setAttribute("width", 240);
 
 
-var ratio = window.devicePixelRatio || 1;
-var w = screen.width * ratio;
-var h = screen.height * ratio;
-
-window.onload = function () {
-document.getElementById("img_height").value = h;
-document.getElementById("img_width").value = w;
-
-}
+		}
 	</script>
 
 </head>
@@ -252,12 +263,14 @@ document.getElementById("img_width").value = w;
 
 <?php
 	if(isset($_POST['submit'])){
+		$image_file = $filename."?id=".rand(0,1292938);
 ?>
-	<!-- this should show the submitted image on line 79 -->
-	<img src="<?=$filename;?>?id=<?=rand(0,1292938);?>" />
+	<!-- the image -->
+	<a href="<?= $image_file; ?>"><img id="result_image" height="200" width="200" src="<?= $image_file; ?>" /></a>
 
-	Share your goals to hold yourself accountable
-	<a href="http://twitter.com/home?status=<?php $goal ?> #lifegoals">Share with friends to hold yourself accountable</a>"></a>
+	<!-- the link -->
+	<p>Press and hold to save to your photos, then assign it as your lock screen.</p>
+	<a href="http://twitter.com/home?status=<?php $goal ?> #lifegoals">Share with friends to hold yourself accountable</a>
 <?php
 } else {
 ?>
@@ -271,7 +284,7 @@ document.getElementById("img_width").value = w;
 	<form action="" method="post">
 		<input type="hidden" value="1080" id="img_height" name="img_width" />
 		<input type="hidden" value="1920" id="img_width" name="img_height" />
-		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar"><br/>
+		<input type="text" value="<?php if(isset($_POST['goal'])){echo $_POST['goal'];}?>" name="goal" maxlength="15" placeholder="No added sugar">
 		<input name="submit" type="submit" class="" value="Make a reminder background" />
 	</form>
 </div>
