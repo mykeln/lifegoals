@@ -153,7 +153,7 @@
 </div>
 
 <div class="footer">
-	<a href="http://wakerlabs.com">© 2015 Waker, LLC.</a>
+	<a href="http://wakerlabs.com">© Waker, LLC.</a>
 </div>
 
 <?php

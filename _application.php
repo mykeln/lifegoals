@@ -23,7 +23,7 @@ function create_image($goal,$bg_color,$img_height,$img_width){
   imagesavealpha($img, true);
 
   // FIXME: get colors from submitted form
-  $fg_color = imagecolorallocate($img, 255,255,255);
+  $fg_color = hexColorAllocate($img, '#ffffff');
   //$bg_color = imagecolorallocate($img, 0,0,0);
   $bg_color = hexColorAllocate($img,$bg_color);
 
@@ -33,7 +33,7 @@ function create_image($goal,$bg_color,$img_height,$img_width){
   imagefilledrectangle($img, 0, 0, $imageX, $imageY, $bg_color);
 
   // setting the font family and size
-  $font = "./font/Capriola-Regular.ttf";
+  $font = "./font/Gotham-Rounded.ttf";
   $fontSize = 120;
 
   // get text from submitted form
